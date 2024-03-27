@@ -27,7 +27,7 @@ float zBuffer[160 * 44];
 char buffer[160 * 44];
 int backgroundASCIICode = ' ';
 int distanceFromCamera = 60;
-float K1 = 60;
+float K1 = 70;
 
 float incrementSpeed = 0.6;
 
@@ -66,22 +66,6 @@ void calculateForSurface(float cubeX, float cubeY, float cubeZ, int ch) {
             buffer[idx] = ch;
         }
     }
-
-
-    // int i, j, k;
-    // for (i = 0; i < width; i++) {
-    //     for (j = 0; j < height; j++) {
-    //         for (k = 0; k < width; k++) {
-    //             float x = calculateX(i, j, k);
-    //             float y = calculateY(i, j, k);
-    //             float z = calculateZ(i, j, k);
-    //             if (x * x + y * y + z * z <= cubeWidth * cubeWidth) {
-    //                 zBuffer[i * height + j] = max(zBuffer[i * height + j], z);
-    //                 buffer[i * height + j] = ch;
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 int main() {
@@ -92,7 +76,11 @@ int main() {
         for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX+= incrementSpeed) {
             for (float cubeY = -cubeWidth; cubeY < cubeWidth; cubeY+= incrementSpeed) {
                 calculateForSurface(cubeX, cubeY, -cubeWidth, '.');
-                calculateForSurface(cubeWidth, cubeY, cubeX, '#');
+                calculateForSurface(cubeWidth, cubeY, cubeX, '$');
+                calculateForSurface(-cubeWidth, cubeY, -cubeX, '~');
+                calculateForSurface(-cubeX, cubeY, cubeWidth, '#');
+                calculateForSurface(cubeX, -cubeWidth, -cubeY, ';');
+                calculateForSurface(cubeX, cubeWidth, cubeY, ';');
             }
         }
         printf("\x1b[H");
@@ -103,7 +91,7 @@ int main() {
         A += 0.05;
         B += 0.05;
         C += 0.01;
-        usleep(8000 * 2);
+        usleep(12000 * 2);
     }
 
     return 0;
