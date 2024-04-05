@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body {
-    background: #3e2a58
+    background: #dedede
 }
 
 .password-box {
@@ -17,6 +17,18 @@ body {
     margin: 300px auto;
     display: flex;
     align-items: center;
+}
+.easy-password {
+    border-bottom: 4px solid #c32822;
+    border-right: 4px solid #c32822;
+}
+.normal-password {
+    border-bottom: 4px solid #eecc0b;
+    border-right: 4px solid #eecc0b;
+}
+.strong-password {
+    border-bottom: 4px solid #209f40;
+    border-right: 4px solid #209f40;
 }
 .password-box input {
     width: 100%;
