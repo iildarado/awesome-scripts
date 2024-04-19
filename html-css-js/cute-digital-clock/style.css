@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg-color: #2e2e44;
+    --bg-dark-color: #2d2f41;
+    --hour1-color: #634dff;
+    --hour2-color: #5fd4ff;
+    --minute1-color: #ff5e9a;
+    --minute2-color: #ffb960;
+    --second1-color: #24ff6d;
+    --second2-color: #2f93f1;
+    --ampm1-color: #f7b63f;
+    --ampm2-color: #faf879;
+    --white-color: #ffffff;
+    --gray-color: #929292;
+    --gray-light-color: #efefef;
+    --calendar1-color: #ae4af6;
+    --calendar2-color: #ff98d1;
+    --dotmenu-color: #353e54;
+    --switch-btn-color: #485470;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+}
+.digital-clock {
+    position: relative;
+    color: var(--white-color);
+    background-color: var(--bg-dark-color);
+    width: 425px;
+    padding: 20px 45px;
+    box-shadow: 0 5px 25px rgba(14, 21, 37, 0.8);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.time {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hours, .dots, .minutes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    padding: 0 10px;
+    line-height: 125px;
+}
+.hours, .minutes {
+    font-size: 6.5em;
+    width: 125px;
+
+}
+.dots {
+    font-size: 5em;
+    color: var(--gray-color)
+}
+.hours {
+    background: -webkit-linear-gradient(90deg, var(--hour1-color), var(--hour2-color));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.minutes {
+    background: -webkit-linear-gradient(90deg, var(--minute1-color), var(--minute2-color));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.right-side {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.period, .seconds {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.period {
+    transform: translateY(-20px);
+    background: -webkit-linear-gradient(90deg, var(--ampm1-color), var(--ampm2-color));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.hide {
+    opacity: 30%;
+}
+.seconds {
+    transform: translateY(16px);
+    background: -webkit-linear-gradient(90deg, var(--second1-color), var(--second2-color));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-bottom: 5px;
+    background: -webkit-linear-gradient(90deg, var(--calendar1-color), var(--calendar2-color));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.day-name, .day-number, .year {
+    margin-left: 8px;
+}
+.dot-menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: var(--gray-light-color);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.dot-menu {
+    z-index: 999;
+    list-style: none;
+    background: var(--dotmenu-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+}   
+.dot-menu.active {
+    visibility: visible;
+    opacity: 1;
+}
+.dot-menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clock-format-text {
+    color: var(--gray-light-color);
+    font-size: 0.9em;
+    margin-right: 20px;
+}
+.format-switch-btn {
+    width: 35px;
+    height: 15px;
+    background: var(--switch-btn-color);
+    border-radius: 75px;
+    box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.format-switch-btn:before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--minute1-color);
+    border-radius: 50%;
+    box-shadow: 0 5px 25px var(--minute1-color);
+    transform: translateX(-10px);
+    transition: 0.3s ease;
+    transition-property: bakground, transform;
+}
+.format-switch-btn.active:before {
+    background: var(--second1-color);
+    box-shadow: 0 5px 25px var(--second1-color);
+    transform: translateX(10px);
+}
